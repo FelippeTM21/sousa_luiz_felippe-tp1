@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://blqwaavxm58se"
+path="res://.godot/imported/Shaver Sound Effect.mp3-ce51db0c57dff998bde9b64ed6e5cd04.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Shaver Sound Effect.mp3"
+dest_files=["res://.godot/imported/Shaver Sound Effect.mp3-ce51db0c57dff998bde9b64ed6e5cd04.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

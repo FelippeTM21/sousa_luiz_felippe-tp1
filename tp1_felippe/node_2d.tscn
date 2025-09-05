@@ -1,9 +1,75 @@
-[gd_scene format=3 uid="uid://bdqfvh5g62txo"]
+[gd_scene load_steps=11 format=3 uid="uid://bdqfvh5g62txo"]
+
+[ext_resource type="Script" uid="uid://uhk1ppa7ho4v" path="res://button_click.gd" id="2_0hol4"]
+[ext_resource type="AudioStream" uid="uid://blqwaavxm58se" path="res://assets/audio/Shaver Sound Effect.mp3" id="3_4d7sh"]
+[ext_resource type="AudioStream" uid="uid://os2arhud60tw" path="res://assets/audio/EATING SOUND EFFECT.mp3" id="3_ir8iy"]
+[ext_resource type="Script" uid="uid://wn815blwhivd" path="res://button_toggle.gd" id="3_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://qexwc3f04vfe" path="res://assets/images/sprite_0.png" id="5_4d7sh"]
+[ext_resource type="Texture2D" uid="uid://cxltpihun3rca" path="res://assets/images/sprite_1.png" id="6_ir8iy"]
+[ext_resource type="Texture2D" uid="uid://cikf62ovwpx8p" path="res://assets/images/sprite_2.png" id="7_hqns4"]
+[ext_resource type="Texture2D" uid="uid://dghcge1uhbeec" path="res://assets/images/sprite_3.png" id="8_x0ka3"]
+[ext_resource type="Script" uid="uid://w1jha2nlvx81" path="res://animated_sprite_2d.gd" id="9_0h7mo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nr8wp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_4d7sh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ir8iy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hqns4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_x0ka3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Button" type="Button" parent="."]
-offset_left = 80.0
-offset_top = 59.0
-offset_right = 391.0
-offset_bottom = 199.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button_click" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 561.0
+offset_right = 322.0
+offset_bottom = 617.0
+text = "Nourir"
+script = ExtResource("2_0hol4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Control/Button_click"]
+stream = ExtResource("3_ir8iy")
+max_distance = 1949.0
+
+[node name="Button_toggle" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 566.0
+offset_right = 1112.0
+offset_bottom = 625.0
+toggle_mode = true
+text = "Raser"
+script = ExtResource("3_q6r6c")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Control/Button_toggle"]
+stream = ExtResource("3_4d7sh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(572, 291)
+scale = Vector2(0.316667, 0.316667)
+sprite_frames = SubResource("SpriteFrames_nr8wp")
+speed_scale = 0.2
+script = ExtResource("9_0h7mo")
+
+[connection signal="pressed" from="Control/Button_click" to="Control/Button_click" method="_on_pressed"]
+[connection signal="toggled" from="Control/Button_toggle" to="Control/Button_toggle" method="_on_toggled"]
